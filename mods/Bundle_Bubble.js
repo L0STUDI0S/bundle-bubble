@@ -4,10 +4,11 @@ elements.Crodium = {
 	category: "Bundle",
 	state: "solid",
 	stateHigh: "molten_Crodium",
-	temp: 1000,
-	tempHigh:2760,
+	temp: 2000,
+	tempHigh:3760,
 	tempLow:-250,
 	stateLow: "Crodiminimize",
+	isFood: true
 }
 
 elements.Crodium_Powder = {
@@ -77,12 +78,12 @@ elements.Crodium_bugs = {
 	behavior: behaviors.FLY,
 	reactions: {
 		"head": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
-		"meat": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
-		"Cooked_meat": {elem2:null, chance:30, func:behaviors.FEEDPIXEL },
-				"Cooked_meat": {elem2:null, chance:30, func:behaviors.FEEDPIXEL },
+		"body": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		
 	},
 	category: "life",
 	state: "solid",
+	hardness:30,
 	breakInto: "Crodium",
 }
 
@@ -90,11 +91,73 @@ elements.Crodium_Bugs = {
 	color: "#b27615",
 	behavior: behaviors.FLY,
 	reactions: {
-		"head": {elem2:null, chance:40, func:behaviors.KILLPIXEL2 },
+		"head": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"body": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"Crodium": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
 	},
 	category: "Bundle",
 	state: "solid",
+	hardness:30,
 	breakInto: "Crodium",
+}
+
+
+elements.adult_Crodium_Bugs = {
+	color: "#b27615",
+	behavior: behaviors.FLY,
+	reactions: {
+		"head": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"body": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"Crodium": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+	},
+	category: "Bundle",
+	state: "solid",
+	hardness:300,
+	breakInto: "Crodium",
+}
+
+elements.King_Crodium_Bugs = {
+	color: "#b27615",
+	behavior: behaviors.FLY,
+	reactions: {
+		"head": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"body": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"Crodium": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+	},
+	category: "Bundle",
+	state: "solid",
+	hardness:10000,
+	breakInto: "Crodium",
+}
+
+elements.Female_Crodium_Bugs = {
+	color: "#b27615",
+	behavior: behaviors.FLY,
+	reactions: {
+		"head": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"body": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"Crodium_Repros": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+		"Crodium": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
+	},
+	egg: "Humans",
+    foodNeed: 10,
+	category: "Bundle",
+	state: "solid",
+	hardness:20,
+	breakInto: "Crodium",
+}
+
+elements.Crodium_Repros = {
+	color: "#ede7c0",
+	behavior: [
+		"XX|XX|XX",
+		"XX|XX|XX",
+		"XX|M1|XX",
+	],
+	category: "Bundle",
+	state: "solid",
+	breakInto: "Crodium",
+	isFood: true
 }
 
 elements.Crodium_Explosion = {
@@ -135,9 +198,9 @@ elements.Powderlizer = {
 elements.Crodium_Nuke = {
 	color: "#876f1b",
 	behavior: [
-        "XX|EX:10>plasma,fire,plasma,fire,plasma,nuke,|XX",
-        "EX:10>plasma,fire,plasma,fire,plasma,nuke,|XX|EX:10>plasma,fire,plasma,fire,plasma,nuke,",
-        "M1|M2 AND EX:10>plasma,fire,plasma,fire,plasma,nuke,|M1",
+        "XX|EX:40>plasma,fire,nuke,plasma,fire,nuke,plasma,fire,nuke,|XX",
+        "EX:40>plasma,fire,nuke,plasma,fire,nuke,plasma,fire,nuke,|XX|EX:40>plasma,fire,nuke,plasma,fire,nuke,plasma,fire,nuke,",
+        "M1|M2 AND EX:40>plasma,fire,nuke,plasma,fire,nuke,plasma,fire,nuke,|M1",
     ],
 	category: "Bundle",
 	state: "solid",
@@ -181,7 +244,7 @@ elements.Merge = {
 }
 
 elements.Cup_of_water = {
-	color: "#09a74a",
+	color: "#2687fb",
 	behavior: [
 		"XX|XX|XX",
 		"XX|XX|XX",
@@ -189,7 +252,20 @@ elements.Cup_of_water = {
 	],
 	category: "Bundle",
 	state: "solid",
+	breakInto:"Smashed_cup_of_water",
 	hidden:1,
+}
+
+elements.Cup = {
+	color: "#9c9c9c",
+	behavior: [
+		"XX|XX|XX",
+		"XX|XX|XX",
+		"XX|M1|XX",
+	],
+	category: "Bundle",
+	state: "solid",
+	breakInto:"Smashed_cup",
 }
 
 elements.Crodium_Powder = {
@@ -216,7 +292,6 @@ elements.Leather = {
 		"XX|M1|XX",
 	],
 	reactions: {
-		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
 	},
 	category: "Bundle",
@@ -246,22 +321,6 @@ elements.Leaf_leather_Sack = {
 	state: "solid",
 }
 
-elements.LL_Sack_Powderlizer = {
-	color: "#09a74a",
-	behavior: [
-		"XX|XX|XX",
-		"XX|XX|XX",
-		"XX|M1|XX",
-	],
-	reactions: {
-		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
-	},
-	category: "Bundle",
-	state: "solid",
-	breakInto:"Powderlizer",
-	hidden:1,
-}
-
 elements.LL_Sack_meat = {
 	color: "#09a74a",
 	behavior: [
@@ -271,11 +330,13 @@ elements.LL_Sack_meat = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "meat"},
 	},
 	category: "Bundle",
 	state: "solid",
 	hidden:1,
 }
+
 elements.LL_Sack_cooked_meat = {
 	color: "#09a74a",
 	behavior: [
@@ -285,6 +346,7 @@ elements.LL_Sack_cooked_meat = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "cooked_meat"},
 	},
 	category: "Bundle",
 	state: "solid",
@@ -300,6 +362,7 @@ elements.LL_Sack_grass = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "grass"},
 	},
 	category: "Bundle",
 	state: "solid",
@@ -315,6 +378,7 @@ elements.LL_Sack_sand = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "sand"},
 	},
 	category: "Bundle",
 	state: "solid",
@@ -330,6 +394,8 @@ elements.LL_Sack_water = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"Cup": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "LL_Sack_cupofwater"},
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "water"},
 	},
 	category: "Bundle",
 	state: "solid",
@@ -345,13 +411,15 @@ elements.LL_Sack_cupofwater = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "cup_of_water"},
 	},
 	category: "Bundle",
 	state: "solid",
+	breakInto:"LL_Sack_SCOW",
 	hidden:1,
 }
 
-elements.LL_Sack_tnt = {
+elements.LL_Sack_SCOW = {
 	color: "#09a74a",
 	behavior: [
 		"XX|XX|XX",
@@ -360,6 +428,24 @@ elements.LL_Sack_tnt = {
 	],
 	reactions: {
 		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "Smashed_cup_of_water"},
+	},
+	category: "Bundle",
+	state: "solid",
+	hidden:1,
+}
+
+
+elements.LL_Sack_dynamite = {
+	color: "#09a74a",
+	behavior: [
+		"XX|XX|XX",
+		"XX|XX|XX",
+		"XX|M1|XX",
+	],
+	reactions: {
+		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"zipper": {elem2:null, chance:40, func:behaviors.KILLPIXEL1, elem1: "dynamite"},
 	},
 	category: "Bundle",
 	state: "solid",
@@ -370,21 +456,51 @@ elements.LL_Sack_tnt = {
 	hidden:1,
 }
 
-elements.LL_Sack_magma = {
-	color: "#09a74a",
+elements.zipper = {
+	color: "#787878",
 	behavior: [
 		"XX|XX|XX",
 		"XX|XX|XX",
 		"XX|M1|XX",
 	],
+	category: "Bundle",
+	state: "solid",
+}
+
+elements.Smashed_cup_of_water = {
+	color: "#9c9c9c",
+	behavior: [
+		"XX|XX|XX",
+		"CH:water|XX|XX",
+		"M2|M1|M2",
+	],
+	category: "Bundle",
+	state: "solid",
+	hidden:1,
+}
+
+elements.Smashed_cup = {
+	color: "#9c9c9c",
+	behavior: [
+		"XX|XX|XX",
+		"XX|XX|XX",
+		"M2|M1|M2",
+	],
+	category: "Bundle",
+	state: "solid",
+	hidden:1,
+}
+
+elements.Obomanation = {
+	color: "#4e3077",
+	behavior: [
+		"XX|M1%20|XX",
+		"M1%50|XX|M1%50",
+		"XX|M1|XX",
+	],
 	reactions: {
-		"Fire": {elem2:null, chance:40, func:behaviors.KILLPIXEL1 },
+		"head": {elem2:null, chance:40, func:behaviors.KILLPIXEL2 },
 	},
 	category: "Bundle",
 	state: "solid",
-	stateHigh:"bomb",
-	tempHigh:400,
-	templow:0,
-	stateLow:"ash",
-	hidden:1,
 }
