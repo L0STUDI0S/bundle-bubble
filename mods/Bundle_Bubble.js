@@ -139,7 +139,7 @@ elements.Female_Crodium_Bugs = {
 		"Crodium_Repros": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
 		"Crodium": {elem2:null, chance:40, func:behaviors.FEEDPIXEL },
 	},
-	egg: "Humans",
+	egg: "Crodium_Bugs",
     foodNeed: 10,
 	category: "Bundle",
 	state: "solid",
